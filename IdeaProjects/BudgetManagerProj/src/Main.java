@@ -13,6 +13,5 @@ public class Main extends DataBase{
         if(n == 1){
             db.addRow(conn, "Income", 10000);
         }
-
     }
 }
