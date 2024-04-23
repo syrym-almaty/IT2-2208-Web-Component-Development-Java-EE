@@ -21,14 +21,12 @@ public class User {
     @Column(name = "id")
     Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name")
     String name;
 
-    @Column(name = "email", nullable = false, unique = true)
+    @Column(name = "email")
     String email;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     Role role;
-
-
 }

@@ -21,6 +21,7 @@ public class Post {
     Long id;
     String title;
     String content;
+
     @ManyToOne
     @JoinColumn(name = "author_id")
     User author;

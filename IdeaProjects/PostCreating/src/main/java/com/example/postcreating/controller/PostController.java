@@ -4,12 +4,11 @@ import com.example.postcreating.dto.PostDTO;
 import com.example.postcreating.service.PostService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import static com.example.postcreating.constant.UserConstant.X_SHARER_USER_ID;
-
 import java.util.List;
+
+import static com.example.postcreating.constant.UserConstant.X_SHARER_USER_ID;
 
 @RestController
 @RequiredArgsConstructor
@@ -34,14 +33,11 @@ public class PostController {
 
 
 
-    /*@GetMapping("/search")
+    @GetMapping("/search")
     public List<PostDTO> getPostsByNameOrDesc(@RequestParam final String text){
         return postService.getPostByNameOrContent(text);
-    }*/
+    }
 
-/*
-    @PreAuthorize("#post.userId == authentication.principal.username or hasAuthority('ADMIN')")
-*/
     @DeleteMapping("/{postId}/{userId}")
     public void deletePost(@PathVariable final Long userId, @PathVariable final Long postId) {
         postService.erasePost(userId, postId);
@@ -55,7 +51,17 @@ public class PostController {
     }
 
     @GetMapping
-    public List<PostDTO> getPosts() {
-        return postService.getPosts();
+    public List<PostDTO> getPosts(@PathVariable Long userId) {
+        return postService.getPosts(userId);
+    }
+
+    @GetMapping("/asc")
+    public List<PostDTO> getPostsByNameAsc() {
+        return postService.getPostsByNameAsc();
+    }
+
+    @GetMapping("/desc")
+    public List<PostDTO> getPostsByNameDesc() {
+        return postService.findPostsByNameDesc();
     }
 }

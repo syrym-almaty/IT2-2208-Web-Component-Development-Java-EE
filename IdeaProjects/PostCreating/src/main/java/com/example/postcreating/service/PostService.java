@@ -13,11 +13,13 @@ public interface PostService {
 
     PostDTO getPost(Long id);
 
-/*
     List<PostDTO> getPostByNameOrContent(String text);
-*/
 
     List<PostDTO> getPostsByUser(Long userId);
 
-    List<PostDTO> getPosts();
+    List<PostDTO> getPosts(Long adminId);
+
+    List<PostDTO> getPostsByNameAsc();
+
+    List<PostDTO> findPostsByNameDesc();
 }

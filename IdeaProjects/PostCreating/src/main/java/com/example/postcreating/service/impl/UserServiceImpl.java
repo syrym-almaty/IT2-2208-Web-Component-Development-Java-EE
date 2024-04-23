@@ -2,17 +2,22 @@ package com.example.postcreating.service.impl;
 
 import com.example.postcreating.dto.UserDTO;
 import com.example.postcreating.entity.User;
-import com.example.postcreating.handlers.NotFoundException;
+import com.example.postcreating.handlers.BadRequestException;
 import com.example.postcreating.mapper.UserMapper;
 import com.example.postcreating.repository.UserRepository;
 import com.example.postcreating.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
+import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.postcreating.entity.Role.ADMIN;
 
 @Slf4j
 @Service
@@ -25,8 +30,8 @@ public class UserServiceImpl implements UserService {
     public UserDTO addUser(UserDTO userDTO) {
         log.debug("Adding a user with email: {}", userDTO.getEmail());
 
-        User savedUser = (User) userRepository.saveAndFlush(mapper.toModule(userDTO));
-        UserDTO savedUserDTO = mapper.toDTO(savedUser);
+        User savedUser = userRepository.saveAndFlush(UserMapper.toModule(userDTO));
+        UserDTO savedUserDTO = UserMapper.toDTO(savedUser);
 
         log.info("User added with ID: {}", savedUserDTO.getId());
         return savedUserDTO;
@@ -42,7 +47,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(realUser);
 
         log.info("User updated with ID: {}", id);
-        return mapper.toDTO(realUser);
+        return UserMapper.toDTO(realUser);
     }
 
     @Override
@@ -52,7 +57,7 @@ public class UserServiceImpl implements UserService {
         User user = findUserById(id);
 
         log.info("User retrieved with ID: {}", id);
-        return mapper.toDTO(user);
+        return UserMapper.toDTO(user);
     }
 
     @Override
@@ -65,8 +70,34 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> getEveryUser() {
-        return UserMapper.toDTOUserList(userRepository.findAll());
+    public List<UserDTO> getEveryUser(Long adminId) {
+        /*return UserMapper.toDTOUserList(userRepository.findAll());*/
+
+
+        log.debug("Retrieving all users");
+
+        isAdmin(adminId);
+
+        final List<UserDTO> userDTOs = new ArrayList<>();
+        final Sort sort = Sort.by(Sort.Direction.ASC, "id");
+        Pageable page = PageRequest.of(0, 1024, sort);
+        Page<User> userPage = userRepository.findAll(page);
+
+        do {
+            userPage.getContent().forEach(user -> {
+                UserDTO userDTO = UserMapper.toDTO(user);
+                userDTOs.add(userDTO);
+            });
+            if (userPage.hasNext()) {
+                page = userPage.nextOrLastPageable();
+                userPage = userRepository.findAll(page);
+            } else {
+                page = null;
+            }
+        } while (page != null);
+
+        log.info("Total users retrieved: {}", userDTOs.size());
+        return userDTOs;
     }
 
     @Override
@@ -75,6 +106,23 @@ public class UserServiceImpl implements UserService {
 
         log.debug("User existence check for ID: {} - Exists: {}", id, exists);
         return exists;    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private User findUserById(final Long id){
 
@@ -93,6 +141,12 @@ public class UserServiceImpl implements UserService {
         }
         if (userDTO.getEmail() != null) {
             user.setEmail(userDTO.getEmail());
+        }
+    }
+
+    private void isAdmin(Long id) {
+        if (userRepository.getById(id).getRole() != ADMIN) {
+            throw new BadRequestException("The user is not an admin");
         }
     }
 }
