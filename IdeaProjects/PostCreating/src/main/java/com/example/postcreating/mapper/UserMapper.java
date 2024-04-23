@@ -1,9 +1,7 @@
 package com.example.postcreating.mapper;
 
 
-import com.example.postcreating.dto.PostDTO;
 import com.example.postcreating.dto.UserDTO;
-import com.example.postcreating.entity.Post;
 import com.example.postcreating.entity.User;
 
 import java.util.ArrayList;
