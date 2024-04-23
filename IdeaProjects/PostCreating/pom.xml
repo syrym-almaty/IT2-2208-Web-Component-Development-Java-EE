@@ -101,17 +101,17 @@
 
 
         <!-- Spring Boot Starter Security -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- Spring Security Test for testing your security configuration -->
+        &lt;!&ndash; Spring Security Test for testing your security configuration &ndash;&gt;
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

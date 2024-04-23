@@ -1,7 +1,6 @@
 package com.example.postcreating.service.impl;
 
 import com.example.postcreating.dto.PostDTO;
-import com.example.postcreating.dto.UserDTO;
 import com.example.postcreating.entity.Post;
 import com.example.postcreating.entity.User;
 import com.example.postcreating.handlers.BadRequestException;
@@ -27,9 +26,9 @@ import static com.example.postcreating.entity.Role.ADMIN;
 @Service
 @RequiredArgsConstructor
 public class PostServiceImpl implements PostService {
-    PostRepository postRepository;
-    UserRepository userRepository;
-    PostMapper postMapper;
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
+    private PostMapper postMapper;
 
     @Override
     public PostDTO createPost(PostDTO postDTO, final Long userId) {

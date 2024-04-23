@@ -23,8 +23,8 @@ import static com.example.postcreating.entity.Role.ADMIN;
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
-    private UserRepository userRepository;
-    private UserMapper mapper;
+    private final UserRepository userRepository;
+    private UserMapper userMapper;
 
     @Override
     public UserDTO addUser(UserDTO userDTO) {
@@ -70,17 +70,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> getEveryUser(Long adminId) {
+    public List<UserDTO> getEveryUser() {
         /*return UserMapper.toDTOUserList(userRepository.findAll());*/
 
 
         log.debug("Retrieving all users");
 
-        isAdmin(adminId);
 
         final List<UserDTO> userDTOs = new ArrayList<>();
         final Sort sort = Sort.by(Sort.Direction.ASC, "id");
-        Pageable page = PageRequest.of(0, 1024, sort);
+        Pageable page = PageRequest.of(0, 1, sort);
         Page<User> userPage = userRepository.findAll(page);
 
         do {
@@ -144,9 +143,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    private void isAdmin(Long id) {
-        if (userRepository.getById(id).getRole() != ADMIN) {
+    /*private void isAdmin(Long id) {
+        if (userRepository.getById(id).getRole() == ADMIN) {
             throw new BadRequestException("The user is not an admin");
         }
-    }
+    }*/
 }

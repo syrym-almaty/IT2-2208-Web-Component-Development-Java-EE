@@ -13,7 +13,7 @@ public interface UserService {
 
     void eraseUser(final Long id);
 
-    List<UserDTO> getEveryUser(Long adminId);
+    List<UserDTO> getEveryUser();
 
     boolean userExists(final Long id);
 

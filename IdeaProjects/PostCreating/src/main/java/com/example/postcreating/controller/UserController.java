@@ -4,7 +4,6 @@ import com.example.postcreating.dto.UserDTO;
 import com.example.postcreating.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +24,6 @@ public class UserController {
         return userService.updateUser(userId, userDTO);
     }
 
-    @PreAuthorize("hasAuthority('ADMIN')")
     @DeleteMapping("/{userId}")
     public void deleteUser(@PathVariable final Long userId){
         userService.eraseUser(userId);
@@ -42,7 +40,7 @@ public class UserController {
 
 
     @GetMapping
-    public List<UserDTO> getAll(Long adminId){
-        return userService.getEveryUser(adminId);
+    public List<UserDTO> getAll(){
+        return userService.getEveryUser();
     }
 }
