@@ -1,15 +1,64 @@
-# SFT6310-36-Lab-Web-Component-Development-Java-EE-Lab
+# BreadcrumbsIT2-2208-SFT6310-36-Lab-Web-Component-Development-Java-EE-Lab
+
 ## Overview
-This repository is for the lab exercises for Web Component Development (Java EE). Students will develop and improve a Java Spring project by implementing various features in their respective branches.
 
-## Setup Instructions
-1. Clone the repository: `git clone https://github.com/syrym-almaty/SFT6310-36-Lab-Web-Component-Development-Java-EE-Lab-gr-IT2-2208-building-aud-502.git`
-2. Open the project in your preferred IDE (e.g., IntelliJ, Eclipse).
-3. Run the project using Java Spring Boot.
+Welcome to the repository for the Web Component Development Lab. In this project, each student will work on their own branch to contribute and learn the process of version control and collaboration using Git and GitHub. The main branch is protected and can only be updated by the instructor.
 
-## Branches and Contributions
-- Each student should create their own branch for feature development.
-- Make sure to push your branch and submit pull requests for review.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
+### Guidelines for Collaborators
+
+- **Main branch protection**: Only the instructor can make changes to the `main` branch.
+- **Student branches**: Each student must create and work on their own branch, named after their GitHub username (e.g., `student-username`).
+- **Feature development**: All changes should be made in your individual branch. Once completed, changes can be pushed and reviewed.
+
+## Download Git for windows
+
+https://git-scm.com/downloads
+
+## Instructions for Students
+
+### 1. Cloning the Repository
+
+First, clone the repository to your local machine using the following command:
+
+```bash
+git clone https://github.com/syrym-almaty/BreadcrumbsIT2-2208-SFT6310-36-Lab-Web-Component-Development-Java-EE-Lab.git
+
+cd IT2-2204-SFT6310-32-Lab-Web-Component-Development-Java-EE-Lab
+
+# Build and Run with One Command where the Dockerfile is located
+
+docker build -t my-spring-app . && docker run -p 8080:8080 my-spring-app
+
+# Command to Run
+
+docker-compose up --build
+
+# Create a new branch
+git checkout -b student-username
+
+# Making Changes
+
+git status
+
+# Stage the files
+git add .
+
+# Commit your changes
+git commit -m "Your detailed commit message here"
+
+# Push changes to your branch
+git push origin student-username
+
+# Switch to main branch
+git checkout main
+
+# Pull the latest changes from the main branch
+git pull origin main
+
+# Switch back to your branch
+git checkout student-username
+
+# Merge the latest main branch changes into your branch
+git merge main
