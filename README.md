@@ -82,3 +82,29 @@ Driver Class: org.h2.Driver
 JDBC URL: jdbc:h2:file:./data/demo-db
 User Name: sa
 Password: password
+
+# run sql commands in http://localhost:8080/h2-console
+
+SHOW TABLES;
+SELECT * FROM STUDENT;
+
+
+
+# Switch to an existing branch:
+
+
+git checkout <branch_name>
+
+git switch <branch_name>
+
+git checkout main
+
+
+# Create and switch to a new branch:
+
+
+git checkout -b <new_branch_name>
+
+git switch -c <new_branch_name>
+
+git checkout -b feature/new-feature
