@@ -65,5 +65,20 @@ git merge main
 
 
 # we have added swagger
+# click on try out and test end-points
 
 http://localhost:8080/swagger-ui.html
+
+
+
+
+# Open the H2 console at
+
+http://localhost:8080/h2-console
+
+# Credentials
+
+Driver Class: org.h2.Driver
+JDBC URL: jdbc:h2:file:./data/demo-db
+User Name: sa
+Password: password
