@@ -226,3 +226,5 @@ git commit
 
 # Push the changes
 git push origin feature/new-feature
+
+my first changes
