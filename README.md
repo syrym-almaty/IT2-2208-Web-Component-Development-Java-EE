@@ -159,3 +159,70 @@ git merge -X ours main
 
 git merge -X theirs main
 
+# Best Practices to Avoid Future Merge Conflicts
+
+## Pull Frequently from Main
+
+git checkout main
+git pull origin main
+git checkout feature/new-feature
+git merge main
+
+# Make Smaller, Isolated Changes
+
+## Keeping your changes small and isolated to specific parts of the codebase helps reduce conflicts, as the more you modify the same areas, the higher the chance of conflicts.
+
+# Communicate with the Team
+
+## If you and your team are working on the same files, communication is key. Avoid editing the same files simultaneously unless necessary.
+
+# Using git rerere (Reuse Recorded Resolutions)
+
+## Enable rerere:
+
+git config --global rerere.enabled true
+
+# When Merging Cannot Be Avoided
+
+## Git will mark the conflicting files with the conflict markers (<<<<<<, ======, >>>>>>).
+
+## You will need to resolve conflicts manually by choosing the correct version of the code.
+
+## After resolving the conflicts, you must:
+git add <conflicted_file>
+git commit
+
+# Key Commands:
+
+# Rebasing Workflow (Preferred):
+
+# Ensure you are on the feature branch
+git checkout feature/new-feature
+
+# Fetch the latest changes from the remote repository
+git fetch origin
+
+# Rebase your branch on top of main
+git rebase origin/main
+
+# Resolve any conflicts, then:
+git add <conflicted_file>
+git rebase --continue
+
+# Push the changes (with force to avoid conflicts)
+git push --force-with-lease
+
+
+# Merging Workflow (If Needed):
+# Ensure you are on the feature branch
+git checkout feature/new-feature
+
+# Pull changes from main and merge
+git pull origin main
+
+# Resolve any conflicts manually
+git add <conflicted_file>
+git commit
+
+# Push the changes
+git push origin feature/new-feature
