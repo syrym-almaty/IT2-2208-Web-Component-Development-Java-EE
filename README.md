@@ -1,4 +1,4 @@
-# BreadcrumbsIT2-2208-SFT6310-36-Lab-Web-Component-Development-Java-EE-Lab
+# IT2-2208-SFT6310-36-Lab-Web-Component-Development-Java-EE-Lab
 
 ## Overview
 
