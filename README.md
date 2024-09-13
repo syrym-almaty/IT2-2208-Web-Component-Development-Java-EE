@@ -108,3 +108,54 @@ git checkout -b <new_branch_name>
 git switch -c <new_branch_name>
 
 git checkout -b feature/new-feature
+
+
+# AFTER GIT PULL COMMAND merge conflicts how to solve them
+<<<<<<< HEAD
+// Your local changes
+=======
+ // Changes from the main branch
+>>>>>>> main
+
+
+# Rebasing Instead of Merging
+
+## Step 1: Ensure you're on your local branch (e.g., feature/new-feature):
+
+git checkout feature/new-feature
+
+## Step 2: Fetch the latest changes from the main branch:
+
+git fetch origin
+
+## Step 3: Rebase your branch onto the latest main:
+
+git rebase origin/main
+
+## Step 4: If there are conflicts, Git will pause and let you resolve them manually. After resolving them, use:
+
+git add <conflicted_file>
+git rebase --continue
+
+## Step 5: Once the rebase is done, push your changes:
+
+git push --force-with-lease
+
+# Resolve Conflicts Without Manual Deletion
+
+## Use a Merge Tool
+
+### Launch a merge tool:
+
+git mergetool
+
+## Automatic Conflict Resolution with ours or theirs
+
+### Use ours strategy (to keep your local changes):
+
+git merge -X ours main
+
+### Use theirs strategy (to keep the changes from main):
+
+git merge -X theirs main
+
