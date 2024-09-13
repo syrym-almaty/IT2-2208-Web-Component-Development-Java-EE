@@ -62,3 +62,8 @@ git checkout student-username
 
 # Merge the latest main branch changes into your branch
 git merge main
+
+
+# we have added swagger
+
+http://localhost:8080/swagger-ui.html
