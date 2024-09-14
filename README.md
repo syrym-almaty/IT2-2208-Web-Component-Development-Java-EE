@@ -223,6 +223,7 @@ git pull origin main
 # Resolve any conflicts manually
 git add <conflicted_file>
 git commit
+```
 
 # Push the changes
 git push origin feature/new-feature
