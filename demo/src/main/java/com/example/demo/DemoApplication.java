@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //Misha mne pomog 
 // Ha-ha, eto ya.
+//just second comment 
 
 @SpringBootApplication
 public class DemoApplication {
