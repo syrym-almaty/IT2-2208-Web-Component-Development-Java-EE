@@ -75,7 +75,7 @@ demo
 
 ## 🛠️ **Step-by-Step Instructions**
 
-### ### 1. Create a New Git Branch
+### 1. Create a New Git Branch
 
 Begin by creating a new branch dedicated to the "Update" functionality. This ensures your work remains organized and does not interfere with the main codebase.
 
