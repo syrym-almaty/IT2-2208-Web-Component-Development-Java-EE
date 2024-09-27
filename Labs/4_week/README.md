@@ -1,5 +1,3 @@
----
-
 # 📝 **Student Task: Implement "Update" Functionality for Student Records**
 
 ## 📚 **Objective**
