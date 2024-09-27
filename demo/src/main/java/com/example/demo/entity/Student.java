@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 import java.util.UUID;
@@ -10,12 +11,8 @@ import java.util.UUID;
 public class Student {
 
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-        name = "UUID",
-        strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String name;
     private String email;
@@ -28,12 +25,12 @@ public class Student {
         this.email = email;
     }
 
-    // Getters and Setters
-    public UUID getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
