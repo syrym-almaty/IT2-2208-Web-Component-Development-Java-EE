@@ -1,5 +1,3 @@
-Certainly! Below is a **student-oriented task** designed to guide your students through implementing the **"Update"** functionality in the existing Spring Boot Student Management System. This task is structured in a clear, step-by-step **README** format, making it easy for students to follow and complete within the allocated **2 hours**.
-
 ---
 
 # 📝 **Student Task: Implement "Update" Functionality for Student Records**
