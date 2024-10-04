@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 import org.hibernate.annotations.GenericGenerator;
 import java.util.UUID;
 
@@ -13,7 +14,6 @@ public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String email;
 
@@ -42,7 +42,7 @@ public class Student {
         this.name = name;
     }
 
-    public String getEmail() {
+	public String getEmail() {
         return email;
     }
 
