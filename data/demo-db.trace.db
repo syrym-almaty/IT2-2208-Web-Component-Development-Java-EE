@@ -1,0 +1,12 @@
+2024-09-27 12:11:37.388734+05:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * [*]STUDENT"
+Syntax error in SQL statement "SELECT * [*]STUDENT"; SQL statement:
+SELECT * STUDENT [42000-224]
+2024-09-27 12:11:43.627202+05:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "SELECT * [*]STUDENT"
+Syntax error in SQL statement "SELECT * [*]STUDENT"; SQL statement:
+SELECT * STUDENT [42000-224]
+2024-09-27 12:12:24.488030+05:00 jdbc[14]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Синтаксическая ошибка в выражении SQL "[*]ID"; ожидалось "INSERT"
+Syntax error in SQL statement "[*]ID"; expected "INSERT"; SQL statement:
+ID [42001-224]
