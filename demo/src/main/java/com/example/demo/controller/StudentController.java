@@ -3,15 +3,14 @@ package com.example.demo.controller;
 import com.example.demo.entity.Student;
 import com.example.demo.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/students")
@@ -47,8 +46,8 @@ public class StudentController {
     })
     @GetMapping("/{id}")
     public Student getStudentById(
-            @Parameter(description = "UUID of the student to retrieve", required = true)
-            @PathVariable UUID id) {
+            @Parameter(description = "Long of the student to retrieve", required = true)
+            @PathVariable Long id) {
         return studentService.getStudentById(id);
     }
 
@@ -59,8 +58,8 @@ public class StudentController {
     })
     @DeleteMapping("/{id}")
     public void deleteStudent(
-            @Parameter(description = "UUID of the student to delete", required = true)
-            @PathVariable UUID id) {
+            @Parameter(description = "Long of the student to delete", required = true)
+            @PathVariable Long id) {
         studentService.deleteStudent(id);
     }
 
