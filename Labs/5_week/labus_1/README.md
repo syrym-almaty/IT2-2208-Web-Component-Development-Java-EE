@@ -4,7 +4,7 @@
 
 In this lab, you will enhance the existing **Student Management System** by incorporating advanced architectural patterns, business logic, and modern software development practices. The goal is to deepen your understanding of **Java Spring Boot**, **RESTful API design**, **design patterns**, and **software architecture**.
 
----
+---  
 
 ## **Learning Objectives**
 
