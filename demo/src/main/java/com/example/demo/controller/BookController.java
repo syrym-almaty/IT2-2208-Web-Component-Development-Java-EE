@@ -1,24 +1,22 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Book;
+import com.example.demo.repository.BookRepository;
 import com.example.demo.service.BookService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/books")
 public class BookController {
     @Autowired
     private BookService bookService;
+    private BookRepository bookRepository;
 
     @GetMapping
     public List<Book> getAllBooks() {
@@ -52,5 +50,12 @@ public class BookController {
     public ResponseEntity<Void> deleteBook(@PathVariable UUID id) {
         bookService.deleteBook(id);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/search")
+    public List<Book> searchBooks(@RequestParam String keyword) {
+        return bookRepository.findAll().stream()
+            .filter(book -> book.getTitle().contains(keyword) || book.getAuthor().contains(keyword))
+            .collect(Collectors.toList());
     }
 }
