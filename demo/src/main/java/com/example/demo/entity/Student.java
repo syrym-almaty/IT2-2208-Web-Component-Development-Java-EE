@@ -2,6 +2,9 @@ package com.example.demo.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -13,6 +16,17 @@ public class Student {
     private Long id;
     private String name;
     private String email;
+
+    @ManyToMany
+    @JoinTable(
+            name = "course_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private Set<Course> courses = new HashSet<>();
+
+    // GPA field
+    private Double gpa;
 
     // Constructors
     public Student() {}

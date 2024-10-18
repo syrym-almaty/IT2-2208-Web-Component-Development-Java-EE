@@ -8,6 +8,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -81,5 +82,28 @@ public class StudentController {
             @Parameter(description = "Updated student object", required = true)
             @RequestBody Student updatedStudent) {
         return studentService.updateStudent(id, updatedStudent);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @GetMapping("/{id}/gpa")
+    public ResponseEntity<Double> getStudentGPA(@PathVariable Long id) {
+        Double gpa = studentService.getStudentGPA(id);
+        return ResponseEntity.ok(gpa);
     }
 }
