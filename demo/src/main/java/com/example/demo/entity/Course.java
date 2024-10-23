@@ -31,5 +31,6 @@ public class Course {
     private Set<Student> students = new HashSet<>();
 
     public UnicodeSet getStudents() {
+        return null;
     }
 }
