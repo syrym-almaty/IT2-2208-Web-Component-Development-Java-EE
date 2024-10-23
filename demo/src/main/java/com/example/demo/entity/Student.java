@@ -1,11 +1,9 @@
 package com.example.demo.entity;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Table(name = "students")
@@ -27,6 +25,9 @@ public class Student {
 
     // GPA field
     private Double gpa;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "student")
+    private Set<Grade> grade = new HashSet<>(); ; // Set to hold the grades
 
     // Constructors
     public Student() {}
@@ -57,7 +58,33 @@ public class Student {
         return email;
     }
 
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public Double getGpa() {
+        return gpa;
+    }
+
+    public Set<Grade> getGrade() {
+        return grade;
+    }
+
+    public Set<Grade> getGrades(){return grade;}
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
+    }
+
+    public void setGpa(Double gpa) {
+        this.gpa = gpa;
+    }
+
+    public void setGrade(Set<Grade> grade) {
+        this.grade = grade;
     }
 }

@@ -3,6 +3,9 @@ package com.example.demo.service;
 import com.example.demo.entity.Grade;
 import com.example.demo.entity.GradeId;
 import com.example.demo.exception.ResourceNotFoundException;
+import com.example.demo.factory.GradingStrategy;
+import com.example.demo.factory.GradingStrategyFactory;
+import com.example.demo.manager.GradingManager;
 import com.example.demo.repository.GradeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,5 +53,13 @@ public class GradeService {
             throw new ResourceNotFoundException("Grade not found with studentId " + studentId + " and courseId " + courseId);
         }
         gradeRepository.deleteById(gradeId);
+    }
+
+
+
+    public Double applyGradingStrategy(Long studentId, Long courseId, String strategyType) {
+        Grade grade = getGradeById(studentId, courseId);
+        GradingManager gradingManager = GradingManager.getInstance(); // Ensure one instance
+        return gradingManager.applyStrategy(strategyType, grade.getScore());
     }
 }

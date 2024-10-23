@@ -35,8 +35,10 @@ public class CourseService {
     public Course updateCourse(Long id, Course updatedCourse) {
         return courseRepository.findById(id)
                 .map(course -> {
-                    course.setName(updatedCourse.getName()); // Adjust this based on your Course fields
-                    // Update other fields as necessary
+                    course.setName(updatedCourse.getName());
+                    course.setName(updatedCourse.getName());
+                    course.setCode(updatedCourse.getCode());
+                    course.setStudents(updatedCourse.getStudents());
                     return courseRepository.save(course);
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("Course not found with id " + id));

@@ -57,6 +57,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.DemoApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "WorkArman",
     "kotlin-language-version-configured": "true",
     "last_directory_selection": "D:/IT2-2208-Web-Component-Development-Java-EE/demo/src/test/java",
@@ -101,6 +102,7 @@
       <workItem from="1727419443811" duration="920000" />
       <workItem from="1727420673499" duration="872000" />
       <workItem from="1728015231838" duration="9683000" />
+      <workItem from="1729224250127" duration="2000" />
     </task>
     <servers />
   </component>

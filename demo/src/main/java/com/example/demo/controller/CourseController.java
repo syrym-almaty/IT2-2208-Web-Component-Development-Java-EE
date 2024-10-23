@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import com.example.demo.entity.Course;
 import com.example.demo.entity.Student;
+import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.StudentRepository;
 import com.example.demo.service.CourseService;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/courses")
@@ -28,12 +30,12 @@ public class CourseController {
     @PostMapping
     public ResponseEntity<Course> createCourse(@RequestBody Course course) {
         // Initialize the course's student list if it isn't already
-        List<Student> students = course.getStudents();
+        Set<Student> students = course.getStudents();
         if (students != null) {
             // Optional: Fetch existing students from the database or ensure they are saved
             for (Student student : students) {
-                studentRepository.findById(student.getId()).orElse(student);
-                // You may need to save each student if they are not already in the DB
+                Student existingStudent = studentRepository.findById(student.getId())
+                        .orElseThrow(() -> new ResourceNotFoundException("Student not found with id " + student.getId()));
             }
         }
 

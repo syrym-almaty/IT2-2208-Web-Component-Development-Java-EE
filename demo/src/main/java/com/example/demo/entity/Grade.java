@@ -26,5 +26,37 @@ public class Grade {
 
     @NotNull
     private Double score;
+
+    public GradeId getId() {
+        return id;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public Double getScore() {
+        return score;
+    }
+
+    public void setId(GradeId id) {
+        this.id = id;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
 }
 

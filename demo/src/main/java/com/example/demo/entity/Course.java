@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,13 +26,14 @@ public class Course {
     @Column(unique = true)
     private String code;
 
-    @ManyToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "course_student",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "student_id"))
-    private List<Student> students;
+    private Set<Student> students = new HashSet<>();
 
+    private int credit;
 
     public Long getId() {
         return id;
@@ -47,7 +47,7 @@ public class Course {
         return code;
     }
 
-    public List<Student> getStudents() {
+    public Set<Student> getStudents() {
         return students;
     }
 
@@ -63,7 +63,11 @@ public class Course {
         this.code = code;
     }
 
-    public void setStudents(List<Student> students) {
+    public void setStudents(Set<Student> students) {
         this.students = students;
+    }
+
+    public int getCredits() {
+        return credit;
     }
 }
