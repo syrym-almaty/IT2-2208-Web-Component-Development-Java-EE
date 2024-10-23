@@ -30,3 +30,44 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 }
+
+@Autowired
+private StudentRepository studentRepository;
+
+@Autowired
+private GradeRepository gradeRepository;
+
+public List<Student> getAllStudents() {
+    return studentRepository.findAll();
+}
+@@ -30,6 +33,30 @@ public Student getStudentById(UUID id) {
+    public void deleteStudent(UUID id) {
+        studentRepository.deleteById(id);
+    }
+
+    public Double calculateGPA(UUID studentId) {
+        Student student = studentRepository.findById(studentId)
+                .orElseThrow(() -> new ResourceNotFoundException("Student not found with id " + studentId))
+
+        List<Grade> grades = gradeRepository.findByStudent(student)
+
+        if(grades.isEmpty()){
+            return 0.0;
+        }
+
+        double totalScore = grades.stream()
+                .mapToDouble(Grade::getScore)
+                .sum();
+
+        double gpa = totalScore / grades.size();
+
+        student.setGpa(gpa);
+        studentRepository.save(student)
+
+        return gpa;
+    }
+
+
+    public Student updateStudent(UUID id, Student updatedStudent) {
+        return studentRepository.findById(id)
+                .map(student -> {
