@@ -1,11 +1,13 @@
 package com.example.demo.repository;
 
+import com.example.demo.entity.Grade;
 import com.example.demo.entity.Student;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import java.util.UUID;
+
+import java.util.List;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, UUID> {
-    <T> ScopedValue<T> findById(Long studentId);
+public interface GradeRepository extends JpaRepository<Grade, Long> {
+    List<Grade> findByStudent(Student student);
 }
