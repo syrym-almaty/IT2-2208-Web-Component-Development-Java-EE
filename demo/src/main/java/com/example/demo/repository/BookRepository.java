@@ -1,6 +1,6 @@
 package com.example.demo.repository;
 
-import com.example.demo.entity.Student;
+import com.example.demo.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,6 +8,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface StudentRepository extends JpaRepository<Student, UUID> {
-    Optional<Object> findById(Long studentId);
+public interface BookRepository extends JpaRepository<Book, Long> {
+
+    ScopedValue<Object> findById(UUID id);
+
+    void deleteById(UUID id);
 }
