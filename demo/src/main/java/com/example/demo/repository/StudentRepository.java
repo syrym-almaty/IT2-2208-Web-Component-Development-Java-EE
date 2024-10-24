@@ -7,4 +7,5 @@ import java.util.UUID;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, UUID> {
+    <T> ScopedValue<T> findById(Long studentId);
 }

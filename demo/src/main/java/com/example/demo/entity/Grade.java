@@ -14,7 +14,11 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Grade {
+<<<<<<< HEAD
     @EmbeddedId
+=======
+    @Id
+>>>>>>> 9c6331db6efbf2b8197414cfe5cd8c91495d5e3c
     private GradeId id = new GradeId();
 
     @ManyToOne
@@ -27,6 +31,17 @@ public class Grade {
 
     @NotNull
     private Double score;
+<<<<<<< HEAD
+=======
+
+    public void setId(GradeId id) {
+        this.id = id;
+    }
+
+    public GradeId getId() {
+        return id;
+    }
+>>>>>>> 9c6331db6efbf2b8197414cfe5cd8c91495d5e3c
 }
 
 @Embeddable
