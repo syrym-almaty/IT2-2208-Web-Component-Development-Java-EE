@@ -2,9 +2,13 @@ package com.example.demo.service;
 
 import com.example.demo.entity.Grade;
 import com.example.demo.entity.Student;
+<<<<<<< HEAD
 import com.example.demo.exception.ResourceNotFoundException;
+=======
+>>>>>>> 9c6331db6efbf2b8197414cfe5cd8c91495d5e3c
 import com.example.demo.repository.GradeRepository;
 import com.example.demo.repository.StudentRepository;
+import exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +24,10 @@ public class StudentService {
     @Autowired
     private GradeRepository gradeRepository;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9c6331db6efbf2b8197414cfe5cd8c91495d5e3c
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
@@ -37,7 +44,10 @@ public class StudentService {
         studentRepository.deleteById(id);
     }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9c6331db6efbf2b8197414cfe5cd8c91495d5e3c
     public Double calculateGPA(UUID studentId) {
         Student student = studentRepository.findById(studentId)
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found with id " + studentId));
@@ -55,12 +65,17 @@ public class StudentService {
         double gpa = totalScore / grades.size();
 
         student.setGpa(gpa);
+<<<<<<< HEAD
         studentRepository.save(student);
+=======
+        studentRepository.save(student)
+>>>>>>> 9c6331db6efbf2b8197414cfe5cd8c91495d5e3c
 
         return gpa;
     }
 
 
+<<<<<<< HEAD
 
     public Student updateStudent(UUID id, Student updatedStudent) {
         return studentRepository.findById(id)
@@ -72,4 +87,6 @@ public class StudentService {
                 })
                 .orElseThrow(() -> new ResourceNotFoundException("Student not found with id " + id));
     }
+=======
+>>>>>>> 9c6331db6efbf2b8197414cfe5cd8c91495d5e3c
 }

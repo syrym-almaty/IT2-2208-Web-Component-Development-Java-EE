@@ -1,10 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.entity.Course;
+<<<<<<< HEAD
 import com.example.demo.entity.Student;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.repository.CourseRepository;
 import com.example.demo.repository.StudentRepository;
+=======
+import exception.ResourceNotFoundException;
+>>>>>>> 9c6331db6efbf2b8197414cfe5cd8c91495d5e3c
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
